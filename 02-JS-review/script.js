@@ -142,7 +142,7 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
-
+/*
 // DESTRUCTURING
 
 const book = getBook(1);
@@ -228,3 +228,79 @@ function getTotalReviewCount(book) {
 }
 getTotalReviewCount(book);
 console.log(getTotalReviewCount(book));
+*/
+/*
+function getTotalReviewCount(book) {
+  const goodread = book.reviews?.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+
+  return goodread + librarything;
+}
+const books = getBooks();
+books;
+
+const titles = books.map((book) => 1);
+titles;
+
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  reviewsCount: getTotalReviewCount(book),
+}));
+essentialData;
+
+const longBooks = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation);
+
+const adventureBooks = books.filter((book) =>
+  book.genres.includes("adventure")
+);
+adventureBooks;
+
+// The array reduce method
+
+const allPages = books.reduce((sum, book) => sum + book.pages, 0);
+allPages;
+
+// The array sorted method
+const arr = [3, 7, 6, 5, 1];
+const sorted = arr.sort((a, b) => a - b);
+sorted;
+
+const sortedByPages = books.slice().sort((a, b) => a.pages - b.pages);
+sortedByPages;
+
+// a) Add a book object to array
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the Chamber of Secrets",
+  author: "J.K. Rowling",
+};
+booksAfterAdd = [...books, newBook];
+booksAfterAdd;
+
+// b) Delete a book object to array
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id != 6);
+booksAfterDelete;
+
+// c ) Update book object in the array.
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? {} : book
+);
+
+*/
+
+// fetch("https://jsonplaceholder.typicode.com/todos").then((res) =>
+//   res.json().then((data) => console.log(data))
+// );
+
+async function getTodos() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await res.json();
+}
+data;
+
+getTodos();
+
+// rezultatem tej funkcji jest promise.
