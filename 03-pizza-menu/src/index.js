@@ -93,19 +93,14 @@ function Menu() {
   );
 }
 function Pizza({ pizzaObj }) {
-  // if (pizzaObj.soldOut) return null;
+  if (pizzaObj.soldOut) return null;
   return (
-    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
+    <li className="pizza">
       <img src={pizzaObj.photoName} alt={pizzaObj.photoName} />
       <div>
         <h3>{pizzaObj.name}</h3>
         <p>{pizzaObj.ingredients}</p>
-        <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
-        {/* {pizzaObj.soldOut ? (
-          <span>"SOLD OUT"</span>
-        ) : (
-          <span>{pizzaObj.price}</span>
-        )} */}
+        <span>{pizzaObj.price}</span>
       </div>
     </li>
   );
