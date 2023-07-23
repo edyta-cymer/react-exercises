@@ -1,0 +1,33 @@
+.container {
+  margin: 0 auto;
+  text-align: center;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  height: 40rem;
+  width: 40rem;
+}
+
+.btn {
+  height: 50px;
+  width: 100px;
+  border-radius: 10%;
+  border: none;
+  margin: 10px;
+  background-color: rgb(56, 55, 55);
+  color: #edeeec;
+  font-size: 2rem;
+  text-align: center;
+}
+.btn:hover {
+  background-color: rgba(56, 55, 55, 0.915);
+}
+.span {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.steps {
+  width: 50rem;
+}
