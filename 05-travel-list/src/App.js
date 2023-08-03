@@ -1,5 +1,6 @@
 import Logo from "./components/Logo";
 import Form from "./components/Form";
+import { useState } from "react";
 // import PackingList from "./components/PackingList";
 import Stats from "./components/Stats";
 
@@ -9,20 +10,25 @@ const initialItems = [
 ];
 
 export default function App() {
+  const [items, setItems] = useState([]);
+
+  function handleAddItems(item) {
+    setItems((items) => [...items, item]);
+  }
   return (
     <div>
       <Logo />
-      <Form />
+      <Form onAddItems={handleAddItems} />
       <Stats />
-      <PackingList />
+      <PackingList items={items} />
     </div>
   );
 }
-const PackingList = () => {
+const PackingList = ({ items }) => {
   return (
     <div className="list">
       <ul>
-        {initialItems.map((item) => (
+        {items.map((item) => (
           <Item item={item} key={item.id} />
         ))}
       </ul>
