@@ -1,8 +1,6 @@
 import Logo from "./components/Logo";
 import Form from "./components/Form";
 import { useState } from "react";
-// import PackingList from "./components/PackingList";
-import Stats from "./components/Stats";
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -22,19 +20,21 @@ export default function App() {
       )
     );
   }
+
   return (
     <div>
       <Logo />
       <Form onAddItems={handleAddItems} />
-      <Stats />
       <PackingList
         items={items}
         onDeleteItem={handleDeleteItem}
         onToggleItems={handleToggleItem}
       />
+      <Stats items={items} />
     </div>
   );
 }
+
 const PackingList = ({ items, onDeleteItem, onToggleItems }) => {
   return (
     <div className="list">
@@ -67,5 +67,28 @@ function Item({ item, onDeleteItem, onToggleItems }) {
         <button onClick={() => onDeleteItem(item.id)}>❌</button>
       </span>
     </li>
+  );
+}
+
+function Stats({ items }) {
+  if (!items.length)
+    return (
+      <p className="stats">
+        <em>Start adding some items to your packing list. 🚀 </em>
+      </p>
+    );
+  const numItems = items.length;
+  const numPacked = items.filter((item) => item.packed).length;
+  const percentage = Math.round((numPacked / numItems) * 100);
+
+  return (
+    <footer className="stats">
+      <em>
+        {percentage === 100
+          ? "Youve got everything! Ready to go! ✈️"
+          : `🧳 You have ${numItems} items on your list, and youre already  ${numPacked} packed (
+            ${percentage}%).`}
+      </em>
+    </footer>
   );
 }
