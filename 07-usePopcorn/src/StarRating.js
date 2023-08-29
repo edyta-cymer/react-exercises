@@ -1,4 +1,23 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
+
+const containerStyle = {
+  display: "flex",
+  alignItems: "center",
+  gap: "16px",
+};
+const starContainerStyle = {
+  display: "flex",
+};
+StarRating.propTypes = {
+  maxRating: PropTypes.number,
+  defaultRating: PropTypes.number,
+  color: PropTypes.string,
+  size: PropTypes.number,
+  messages: PropTypes.array,
+  className: PropTypes.string,
+  onSetRating: PropTypes.func,
+};
 
 export default function StarRating({
   maxRating = 5,
@@ -47,15 +66,6 @@ export default function StarRating({
     </div>
   );
 }
-
-const containerStyle = {
-  display: "flex",
-  alignItems: "center",
-  gap: "16px",
-};
-const starContainerStyle = {
-  display: "flex",
-};
 
 function Star({ onRate, full, onHoverIn, onHoverOut, color, size }) {
   const starStyle = {
